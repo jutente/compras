@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Superintendencia;
 
 class SuperintendenciaController extends Controller
@@ -20,11 +21,11 @@ class SuperintendenciaController extends Controller
 
     public function index()
     {
-        $superintendencias = new Superintendencia;
+        $superintendencia = new Superintendencia;
 
-        $superintendencias = $superintendencia->orderby('superintendencia')->paginate(15);
+        $superintendencia = $superintendencia->orderby('superintendencia')->paginate(15);
 
-        return view('superintendencia.index', compact('superintendencias'));
+        return view('superintendencia.index', compact('superintendencia'));
 
     }
 
@@ -48,7 +49,7 @@ class SuperintendenciaController extends Controller
     {
         Superintendencia::create($request->all());
 
-        Session::flash('superintendencia_superintendencia', 'superintendencia cadastrado com sucesso!');
+        Session::flash('create_superintendencia', 'Superintendencia cadastrada com sucesso!');
 
         return redirect(route('superintendencia.index'));
     }
@@ -61,9 +62,9 @@ class SuperintendenciaController extends Controller
      */
     public function show($id)
     {
-        $superintendencias = Superintendencia::findOrFail($id);
+        $superintendencia = Superintendencia::findOrFail($id);
 
-        return view('superintendencia.show', compact('superintendencias'));
+        return view('superintendencia.show', compact('superintendencia'));
     }
 
     /**
@@ -74,9 +75,9 @@ class SuperintendenciaController extends Controller
      */
     public function edit($id)
     {
-        $superintendencias = Superintendencia::findOrFail($id);
+        $superintendencia = Superintendencia::findOrFail($id);
 
-        return view('superintendencia.edit', compact('superintendencias'));
+        return view('superintendencia.edit', compact('superintendencia'));
     }
 
     /**
@@ -88,13 +89,13 @@ class SuperintendenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $superintendencias = Superintendencia::findOrFail($id);
+        $superintendencia = Superintendencia::findOrFail($id);
 
         $superintendencia->update($request->all());
 
-        Session::flash('edited_superintendencia', 'Superintendencia alterado com sucesso!');
+        Session::flash('create_superintendencia', 'Superintendencia alterada com sucesso!');
 
-        return redirect(route('superintendencia.edit', $id));
+        return redirect(route('superintendencia.index'));
     }
 
     /**
@@ -107,7 +108,7 @@ class SuperintendenciaController extends Controller
     {
         Superintendencia::findOrFail($id)->delete();
 
-        Session::flash('deleted_superintendencia', 'Superintendencia excluído com sucesso!');
+        Session::flash('deleted_superintendencia', 'Superintendencia excluída com sucesso!');
 
         return redirect(route('superintendencia.index'));
     }

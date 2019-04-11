@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use App\Tr;
+use App\Setor;
+use App\Superintendencia;
+use App\User;
 
 class TrController extends Controller
 {
@@ -11,9 +17,18 @@ class TrController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $tr = new Tr;
+
+        $tr = $tr->orderby('tr')->paginate(15);
+
+        return view('tr.index', compact('tr'));
     }
 
     /**

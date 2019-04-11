@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use App\Setor;
+use App\Superintendencia;
 
 class SetorController extends Controller
 {
@@ -11,9 +15,18 @@ class SetorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $setor = new Setor;
+
+        $setor = $setor->orderby('setor')->paginate(15);
+
+        return view('setor.index', compact('setor'));
     }
 
     /**
@@ -23,7 +36,9 @@ class SetorController extends Controller
      */
     public function create()
     {
-        //
+        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
+
+        return view('setor.create', compact('superintendencias'));
     }
 
     /**
@@ -34,7 +49,12 @@ class SetorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Setor::create($request->all());
+
+        Session::flash('create_setor', 'Setor cadastrada com sucesso!');
+
+        return redirect(route('setor.index'));
     }
 
     /**
@@ -45,7 +65,11 @@ class SetorController extends Controller
      */
     public function show($id)
     {
-        //
+        $setor = Setor::findOrFail($id);
+
+        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
+
+        return view('setor.show', compact('setor','superintendencias'));
     }
 
     /**
@@ -56,7 +80,11 @@ class SetorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $setor = Setor::findOrFail($id);
+
+        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
+
+        return view('setor.edit', compact('setor','superintendencias'));
     }
 
     /**
@@ -68,7 +96,13 @@ class SetorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $setor = Setor::findOrFail($id);
+
+        $setor->update($request->all());
+
+        Session::flash('create_setor', 'Setor alterada com sucesso!');
+
+        return redirect(route('setor.index'));
     }
 
     /**
@@ -79,6 +113,10 @@ class SetorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Setor::findOrFail($id)->delete();
+
+        Session::flash('deleted_setor', 'Setor excluída com sucesso!');
+
+        return redirect(route('setor.index'));
     }
 }

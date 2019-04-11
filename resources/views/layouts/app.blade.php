@@ -51,7 +51,7 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
 
-                            <li class="nav-item"><a class="nav-link" href="#">Entrada TR</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('tr.index') }}">Entrada TR</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Compras</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Minutas</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Licitaçoes</a></li>
@@ -61,8 +61,8 @@
                                   Tabelas
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="#">Superintendencias</a>
-                                  <a class="dropdown-item" href="#">Setores</a>
+                                  <a class="dropdown-item" href="{{ route('superintendencia.index') }}">Superintendencias</a>
+                                  <a class="dropdown-item" href="{{ route('setor.index') }}">Setores</a>
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
