@@ -39,12 +39,12 @@
                     <!-- superintendencia  -->
                     <div class="form-group col-md-8 {{ $errors->has('superintendencia') ? ' has-error' : '' }}">
                         <label for="superintendencia">Superintendencia</label>
-                        <select class="form-control" id="superintendencia_id" name="superintendencia_id" readonly>
-                        <option value="{{$setor->superintendencia_id}}" selected="true">{{$setor->superintendencia->superintendencia}}</option>
-                            @foreach($superintendencias as $s)
-                                <option value="{{$s->id}}">{{$s->superintendencia}}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" id="superintendencia_id" name="superintendencia_id" value="{{$setor->superintendencia->superintendencia}}" readonly>
+                        @if ($errors->has('superintendencia'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('superintendencia')}}</strong>
+                                </span>
+                        @endif
                 </div>
 
             </div>

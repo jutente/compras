@@ -38,7 +38,11 @@ class TrController extends Controller
      */
     public function create()
     {
-        //
+        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
+        $setors = Setor::orderBy('setor')->get();
+        $users = User::orderBy('name')->get();
+
+        return view('tr.create', compact('superintendencias','setors','users'));
     }
 
     /**
@@ -49,7 +53,11 @@ class TrController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tr::create($request->all());
+
+        Session::flash('create_tr', 'TR cadastrado com sucesso!');
+
+        return redirect(route('tr.index'));
     }
 
     /**
@@ -60,7 +68,9 @@ class TrController extends Controller
      */
     public function show($id)
     {
-        //
+        $tr = Tr::findOrFail($id);
+
+        return view('tr.show',compact('tr'));
     }
 
     /**
@@ -71,7 +81,13 @@ class TrController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tr = Tr::findOrFail($id);
+
+        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
+        $setors = Setor::orderBy('setor')->get();
+        $users = User::orderBy('name')->get();
+
+        return view('tr.edit', compact('tr','superintendencias','setors','users'));
     }
 
     /**
@@ -83,7 +99,13 @@ class TrController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tr = Tr::findOrFail($id);
+
+        $tr->update($request->all());
+
+        Session::flash('create_tr', 'TR alterada com sucesso!');
+
+        return redirect(route('tr.index'));
     }
 
     /**
@@ -94,6 +116,10 @@ class TrController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tr::findOrFail($id)->delete();
+
+        Session::flash('deleted_tr', 'TR excluída com sucesso!');
+
+        return redirect(route('tr.index'));
     }
 }

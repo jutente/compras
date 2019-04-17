@@ -56,11 +56,11 @@
                                 @foreach($tr as $p)
                                 <tr>
                                     <td>{{$p->tr}}</td>
-                                    <td>{{$p->objeto}}</td>
+                                    <td data-toggle="tooltip" title="{{$p->objeto}}">{{substr($p->objeto,0,30)}}</td>
                                     <td>{{$p->superintendencia->superintendencia}}</td>
                                     <td>{{$p->setor->setor}}</td>
-                                    <td>{{$p->user->user}}</td>
-                                    <td>{{$p->observacao->observacao}}</td>
+                                    <td>{{$p->user->name}}</td>
+                                    <td data-toggle="tooltip" title="{{$p->observacao}}">{{substr($p->observacao,0,30)}}</td>
 
                                     <td style="text-align: right">
                                         <div class="btn-group">

@@ -67,9 +67,7 @@ class SetorController extends Controller
     {
         $setor = Setor::findOrFail($id);
 
-        $superintendencias = Superintendencia::orderBy('superintendencia')->get();
-
-        return view('setor.show', compact('setor','superintendencias'));
+        return view('setor.show', compact('setor'));
     }
 
     /**

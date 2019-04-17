@@ -6,46 +6,79 @@
 
     <div class="card">
             <div class="card-header">
-                <a href="{{route('setor.index')}}">Setor</a> - Excluir Registro
+                <a href="{{route('tr.index')}}">TR</a> - Excluir Registro
             </div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('setor.destroy', $setor->id) }}">
+                <form method="POST" action="{{ route('tr.destroy', $tr->id) }}">
                     @csrf
                     @method('DELETE')
-                    <!-- setor -->
 
-                    <div class="form-group col-md-8 {{ $errors->has('setor') ? ' has-error' : '' }}">
-                        <label for="setor">setor:</label>
-                           <input type="text" class="form-control" id="setor" name="setor" value="{{$setor->setor}}" readonly>
-                            @if ($errors->has('setor'))
+                    <!-- tr -->
+                    <div class="form-group col-md-8 {{ $errors->has('tr') ? ' has-error' : '' }}">
+                        <label for="tr">TR:</label>
+                           <input type="text" class="form-control" id="tr" name="tr" value="{{$tr->tr}}" readonly>
+                            @if ($errors->has('tr'))
                                 <span class="help-block">
-                                    <strong>{{$errors->first('setor')}}</strong>
+                                    <strong>{{$errors->first('tr')}}</strong>
                                 </span>
                             @endif
                     </div>
 
-                    <!-- centrocusto  -->
-                    <div class="form-group col-md-6 {{ $errors->has('centrocusto') ? ' has-error' : '' }}">
-                        <label for="centrocusto">Centro de custo:</label>
-                            <input type="text" class="form-control" id="centrocusto" name="centrocusto" value="{{$setor->centrocusto}}" readonly>
-                            @if ($errors->has('centrocusto'))
+                    <!-- objeto  -->
+                    <div class="form-group col-md-8 {{ $errors->has('objeto') ? ' has-error' : '' }}">
+                        <label for="objeto">Objeto:</label>
+                            <textarea class="form-control" id="objeto" name="objeto" rows="3" readonly>{{$tr->objeto}}</textarea>
+                            @if ($errors->has('objeto'))
                                 <span class="help-block">
-                                    <strong>{{$errors->first('centrocusto')}}</strong>
+                                    <strong>{{$errors->first('objeto')}}</strong>
                                 </span>
                             @endif
                     </div>
 
                     <!-- superintendencia  -->
                     <div class="form-group col-md-8 {{ $errors->has('superintendencia') ? ' has-error' : '' }}">
-                        <label for="superintendencia">Superintendencia</label>
-                        <select class="form-control" id="superintendencia_id" name="superintendencia_id" readonly>
-                        <option value="{{$setor->superintendencia_id}}" selected="true">{{$setor->superintendencia->superintendencia}}</option>
-                            @foreach($superintendencias as $s)
-                                <option value="{{$s->id}}">{{$s->superintendencia}}</option>
-                            @endforeach
-                        </select>
-                </div>
+                            <label for="superintendencia">Superintendencia</label>
+                            <input type="text" class="form-control" id="superintendencia_id" name="superintendencia_id" value="{{$tr->superintendencia->superintendencia}}" readonly>
+                            @if ($errors->has('tr'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('tr')}}</strong>
+                                </span>
+                            @endif
+                    </div>
+
+                     <!-- setor   -->
+                     <div class="form-group col-md-8 {{ $errors->has('setor') ? ' has-error' : '' }}">
+                        <label for="setor">Setor</label>
+                        <input type="text" class="form-control" id="setor_id" name="setor_id" value="{{$tr->setor->setor}}" readonly>
+                        @if ($errors->has('setor'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('setor')}}</strong>
+                        </span>
+                        @endif
+                    </div>
+
+                    <!-- user  -->
+                    <div class="form-group col-md-8 {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="user">Usuario</label>
+                            <input type="text" class="form-control" id="user_id" name="user_id" value="{{$tr->user->name}}" readonly>
+                            @if ($errors->has('name'))
+                            <span class="help-block">
+                                <strong>{{$errors->first('name')}}</strong>
+                            </span>
+                            @endif
+                    </div>
+
+                    <!-- observacao  -->
+                    <div class="form-group col-md-8 {{ $errors->has('observacao') ? ' has-error' : '' }}">
+                        <label for="observacao">Observaçao:</label>
+                            <textarea class="form-control" id="observacao" name="observacao" rows="3" readonly>{{$tr->observacao}}</textarea>
+                            @if ($errors->has('observacao'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('observacao')}}</strong>
+                                </span>
+                            @endif
+                    </div>
 
             </div>
 
@@ -60,7 +93,7 @@
 
                </form>
 
-                <a href="{{route('setor.index')}}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
+                <a href="{{route('tr.index')}}" class="btn btn-default btn-sm" role="button"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
             </div>
     </div>
 
