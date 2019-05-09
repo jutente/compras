@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/tr/detalhar/{id}', 'TrController@detalhar')->name('tr.detalhar');
+
 Route::resource('/superintendencia', 'SuperintendenciaController');
 Route::resource('/setor', 'SetorController');
 Route::resource('/tr', 'TrController');

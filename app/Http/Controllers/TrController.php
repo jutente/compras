@@ -122,4 +122,12 @@ class TrController extends Controller
 
         return redirect(route('tr.index'));
     }
+
+    public function detalhar($id)
+    {
+        $tr = Tr::findOrFail($id);
+
+        return view('tr.detalhar',compact('tr'));
+    }
+
 }
