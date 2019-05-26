@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <script src="{{'js/jquery-3.3.1.min.js'}}"></script>
-    <script src="{{'js/popper.min.js'}}"></script>
-    <script src="{{'js/bootstrap.min.js'}}"></script>
+    <script src="{{'../js/jquery-3.4.1.min.js'}}"></script>
+    <script src="{{'../js/popper.min.js'}}"></script>
+    <script src="{{'../js/bootstrap.min.js'}}"></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -52,7 +52,7 @@
                         @if (Auth::check())
 
                             <li class="nav-item"><a class="nav-link" href="{{ route('tr.index') }}">Entrada TR</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Compras</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('compras.index') }}">Compras</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Minutas</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Licitaçoes</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Contratos</a></li>
