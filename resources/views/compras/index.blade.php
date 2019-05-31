@@ -46,7 +46,7 @@
                                 <th>PAC</th>
                                 <th>Modalidade</th>
                                 <th>Responsavel</th>
-                                <th></th>                                
+                                <th></th>
                             </tr>
                             </thead>
 
@@ -60,8 +60,8 @@
 
                                     <td style="text-align: right">
                                         <div class="btn-group">
-                                            <a href="#" class="btn btn-primary btn-sm" role="button">Alterar</a>
-                                            <a href="#" class="btn btn-danger btn-sm" role="button">Excluir</a>
+                                            <a href="{{route('compras.edit',$p->id)}}" class="btn btn-primary btn-sm" role="button">Alterar</a>
+                                            <a href="{{route('compras.show',$p->id)}}" class="btn btn-danger btn-sm" role="button">Excluir</a>
                                         </div>
                                     </td>
 

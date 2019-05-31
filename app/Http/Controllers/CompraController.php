@@ -54,11 +54,11 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-        Tr::create($request->all());
+        Compra::create($request->all());
 
-        Session::flash('create_tr', 'TR cadastrado com sucesso!');
+        Session::flash('create_compra', 'Salvo com sucesso!');
 
-        return redirect(route('tr.index'));
+        return redirect(route('compras.index'));
     }
 
     /**
@@ -69,9 +69,9 @@ class CompraController extends Controller
      */
     public function show($id)
     {
-        $tr = Tr::findOrFail($id);
+        $compra = Compra::findOrFail($id);
 
-        return view('tr.show',compact('tr'));
+        return view('compras.show',compact('compra'));
     }
 
     /**
@@ -82,13 +82,12 @@ class CompraController extends Controller
      */
     public function edit($id)
     {
-        $tr = Tr::findOrFail($id);
+        $compra = Compra::findOrFail($id);
 
-        $compra = Superintendencia::orderBy('superintendencia')->get();
-        $setors = Setor::orderBy('setor')->get();
+        $trs = Tr::orderBy('tr')->get();
         $users = User::orderBy('name')->get();
 
-        return view('tr.edit', compact('tr','compra','setors','users'));
+        return view('compras.edit', compact('compra','trs','users'));
     }
 
     /**
@@ -100,13 +99,13 @@ class CompraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tr = Tr::findOrFail($id);
+        $compra = Compra::findOrFail($id);
 
-        $tr->update($request->all());
+        $compra->update($request->all());
 
-        Session::flash('create_tr', 'TR alterada com sucesso!');
+        Session::flash('create_compra', 'Item alterado com sucesso!');
 
-        return redirect(route('tr.index'));
+        return redirect(route('compras.index'));
     }
 
     /**
@@ -117,11 +116,11 @@ class CompraController extends Controller
      */
     public function destroy($id)
     {
-        Tr::findOrFail($id)->delete();
+        Compra::findOrFail($id)->delete();
 
-        Session::flash('deleted_tr', 'TR excluída com sucesso!');
+        Session::flash('deleted_compra', 'Item excluído com sucesso!');
 
-        return redirect(route('tr.index'));
+        return redirect(route('compras.index'));
     }
 
 }

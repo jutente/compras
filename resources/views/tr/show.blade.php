@@ -37,35 +37,36 @@
                     </div>
 
                     <!-- superintendencia  -->
-                    <div class="form-group col-md-8 {{ $errors->has('superintendencia') ? ' has-error' : '' }}">
+                    <div class="form-group col-md-8 {{ $errors->has('superintendencia_id') ? ' has-error' : '' }}">
                             <label for="superintendencia">Superintendencia</label>
                             <input type="text" class="form-control" id="superintendencia_id" name="superintendencia_id" value="{{$tr->superintendencia->superintendencia}}" readonly>
-                            @if ($errors->has('tr'))
+                            @if ($errors->has('superintendencia_id'))
                                 <span class="help-block">
-                                    <strong>{{$errors->first('tr')}}</strong>
+                                    <strong>{{$errors->first('superintendencia_id')}}</strong>
                                 </span>
                             @endif
                     </div>
 
                      <!-- setor   -->
-                     <div class="form-group col-md-8 {{ $errors->has('setor') ? ' has-error' : '' }}">
+                     <div class="form-group col-md-8 {{ $errors->has('setor_id') ? ' has-error' : '' }}">
                         <label for="setor">Setor</label>
                         <input type="text" class="form-control" id="setor_id" name="setor_id" value="{{$tr->setor->setor}}" readonly>
-                        @if ($errors->has('setor'))
-                        <span class="help-block">
-                            <strong>{{$errors->first('setor')}}</strong>
-                        </span>
-                        @endif
+                            @if ($errors->has('setor_id'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('setor_id')}}</strong>
+                                </span>
+                            @endif
+
                     </div>
 
                     <!-- user  -->
-                    <div class="form-group col-md-8 {{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group col-md-8 {{ $errors->has('user_id') ? ' has-error' : '' }}">
                             <label for="user">Usuario</label>
                             <input type="text" class="form-control" id="user_id" name="user_id" value="{{$tr->user->name}}" readonly>
-                            @if ($errors->has('name'))
-                            <span class="help-block">
-                                <strong>{{$errors->first('name')}}</strong>
-                            </span>
+                            @if ($errors->has('user_id'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('user_id')}}</strong>
+                                </span>
                             @endif
                     </div>
 

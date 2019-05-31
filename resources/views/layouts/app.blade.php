@@ -8,9 +8,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-    <script src="{{'../js/jquery-3.4.1.min.js'}}"></script>
-    <script src="{{'../js/popper.min.js'}}"></script>
-    <script src="{{'../js/bootstrap.min.js'}}"></script>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -105,6 +102,9 @@
 
     <!-- Scripts -->
 
+<script src="{{asset('js/jquery-3.4.1.min.js')}}"></script>
+<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 @yield('script-footer')
 
 
