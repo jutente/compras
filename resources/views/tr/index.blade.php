@@ -30,7 +30,7 @@
 					  </div>
 					  <div class="col-sm-8 text-right">
                         <div class="btn-group btn-group-sm">
-							<a href="#"  class="btn btn-primary">Filtro</a>
+							<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modalFilter"><i class="fas fa-filter"></i> Filtrar</button>
 							<a href="{{route('tr.create')}}" class="btn btn-primary">Novo Registro</a>
 					  	</div>
 					  </div>
@@ -85,4 +85,34 @@
     </div>
 </div>
 
+<!-- Janela de filtragem da consulta -->
+<div class="modal fade" id="modalFilter" tabindex="-1" role="dialog" aria-labelledby="JanelaFiltro" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fas fa-filter"></i> Filtro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form method="GET" action="{{ route('tr.index') }}">
+            <div class="modal-body">
+                <!-- Filtragem dos dados -->
+
+                    <div class="form-group col-md-8">
+                        <label for="tr">TR:</label>
+                        <input type="text" class="form-control" id="tr" name="tr">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary text-left"><i class="fas fa-search"></i>Filtrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-window-close"></i>Fechar</button>
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

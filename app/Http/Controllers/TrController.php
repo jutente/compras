@@ -26,6 +26,10 @@ class TrController extends Controller
     {
         $tr = new Tr;
 
+        if (request()->has('tr')){
+            $tr = $tr->where('tr', 'like',  '%' . request('tr') . '%');
+        }
+
         $tr = $tr->orderby('tr')->paginate(15);
 
         return view('tr.index', compact('tr'));

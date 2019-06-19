@@ -123,4 +123,12 @@ class CompraController extends Controller
         return redirect(route('compras.index'));
     }
 
+    public function detalhar($id)
+    {
+        $compra = Compra::findOrFail($id);
+
+        return view('compras.detalhar',compact('compra'));
+    }
+
+
 }

@@ -60,6 +60,7 @@
 
                                     <td style="text-align: right">
                                         <div class="btn-group">
+                                            <a href="{{route('compras.detalhar',$p->id)}}" class="btn btn-info btn-sm" role="button">Detalhar</a>
                                             <a href="{{route('compras.edit',$p->id)}}" class="btn btn-primary btn-sm" role="button">Alterar</a>
                                             <a href="{{route('compras.show',$p->id)}}" class="btn btn-danger btn-sm" role="button">Excluir</a>
                                         </div>
